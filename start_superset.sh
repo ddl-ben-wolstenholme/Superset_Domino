@@ -2,7 +2,7 @@ export SUPERSET_HOME=$DOMINO_WORKING_DIR
 #export SUP_META_DB_URI=sqlite:///$DOMINO_WORKING_DIR/superset.db
 #export ADDITIONAL_LAUNCH_OPTIONS="--debugger"
 export ADDITIONAL_LAUNCH_OPTIONS=""
- 
+export FLASK_APP=superset
 # export PYTHONPATH=$DOMINO_WORKING_DIR:$PYTHONPATH
  
 # set up Superset if we haven't already
@@ -17,7 +17,8 @@ if [ ! -f $SUPERSET_HOME/.setup-complete ]; then
     echo "Creating default roles and permissions"
     superset init
  
-    touch $SUPERSET_HOME/.setup-completeelse
+    touch $SUPERSET_HOME/.setup-complete
+    else
  
     # always upgrade the database, running any pending migrations
     superset db upgrade
