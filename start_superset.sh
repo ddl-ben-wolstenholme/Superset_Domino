@@ -2,17 +2,19 @@ export SUPERSET_HOME=$DOMINO_WORKING_DIR
 #export SUP_META_DB_URI=sqlite:///$DOMINO_WORKING_DIR/superset.db
 #export ADDITIONAL_LAUNCH_OPTIONS="--debugger"
 export ADDITIONAL_LAUNCH_OPTIONS=""
-export FLASK_APP=superset
 # export PYTHONPATH=$DOMINO_WORKING_DIR:$PYTHONPATH
  
 # set up Superset if we haven't already
 if [ ! -f $SUPERSET_HOME/.setup-complete ]; then
     echo "Running first time setup for Superset"
-    superset fab create-admin --username admin --password superset --firstname Admin --lastname Superset --email superset+admin@example.com    echo "Initializing database"
+    export FLASK_APP=superset
+    echo "Initializing database"
     superset db upgrade
+    echo "Creating admin user"
+    superset fab create-admin --username admin --password superset --firstname Admin --lastname Superset --email superset+admin@example.com
  
-    # echo "Loading examples"
-    # superset load_examples
+    echo "Loading examples"
+    superset load_examples
  
     echo "Creating default roles and permissions"
     superset init
