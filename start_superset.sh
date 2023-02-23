@@ -6,17 +6,17 @@ export ADDITIONAL_LAUNCH_OPTIONS=""
  
 # set up Superset if we haven't already
 if [ ! -f $SUPERSET_HOME/.setup-complete ]; then
-    echo "Initializing database"
-    superset db upgrade
-
     echo "Running first time setup for Superset"
     export FLASK_APP=superset
+    
+    echo "Initializing database"
+    superset db upgrade
    
     echo "Creating admin user"
     superset fab create-admin --username admin --password superset --firstname Admin --lastname Superset --email superset+admin@example.com
  
-    echo "Loading examples"
-    superset load_examples
+    # echo "Loading examples"
+    # superset load_examples
  
     echo "Creating default roles and permissions"
     superset init
@@ -31,4 +31,4 @@ if [ ! -f $SUPERSET_HOME/.setup-complete ]; then
 fi
  
 echo "Starting up Superset"
-(superset run --host "0.0.0.0" --port 8088 --with-threads --reload $ADDITIONAL_LAUNCH_OPTIONS 3>&1 1>&2 2>&3 | grep -v DEBUG\: |grep -v WARN\: | grep -v INFO\:) 3>&1 1>&2 2>&3
+(superset run --host "0.0.0.0" --port 8089 --with-threads --reload $ADDITIONAL_LAUNCH_OPTIONS 3>&1 1>&2 2>&3 | grep -v DEBUG\: |grep -v WARN\: | grep -v INFO\:) 3>&1 1>&2 2>&3
