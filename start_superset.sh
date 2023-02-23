@@ -6,10 +6,12 @@ export ADDITIONAL_LAUNCH_OPTIONS=""
  
 # set up Superset if we haven't already
 if [ ! -f $SUPERSET_HOME/.setup-complete ]; then
-    echo "Running first time setup for Superset"
-    export FLASK_APP=superset
     echo "Initializing database"
     superset db upgrade
+
+    echo "Running first time setup for Superset"
+    export FLASK_APP=superset
+   
     echo "Creating admin user"
     superset fab create-admin --username admin --password superset --firstname Admin --lastname Superset --email superset+admin@example.com
  
