@@ -3,11 +3,13 @@ export SUPERSET_HOME=$DOMINO_WORKING_DIR
 #export ADDITIONAL_LAUNCH_OPTIONS="--debugger"
 export ADDITIONAL_LAUNCH_OPTIONS=""
 # export PYTHONPATH=$DOMINO_WORKING_DIR:$PYTHONPATH
- 
+export FLASK_APP=superset 
+
 # set up Superset if we haven't already
 if [ ! -f $SUPERSET_HOME/.setup-complete ]; then
-    echo "Running first time setup for Superset"
+    echo "Running first time setup for Superset"    
     export FLASK_APP=superset
+
     
     echo "Initializing database"
     superset db upgrade
