@@ -29,4 +29,4 @@ else
 fi
 
 echo "Starting up Superset"
-(superset run --host "0.0.0.0" --port 8088 --with-threads --reload $ADDITIONAL_LAUNCH_OPTIONS 3>&1 1>&2 2>&3 | grep -v DEBUG\: |grep -v WARN\:  | grep -v INFO\:) 3>&1 1>&2 2>&3
+(superset run --host "0.0.0.0" --port 8088 --with-threads --reload $ADDITIONAL_LAUNCH_OPTIONS 3>&1 1>&2 2>&3 | grep -v INFO\:) 3>&1 1>&2 2>&3
