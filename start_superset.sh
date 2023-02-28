@@ -7,7 +7,7 @@ export FLASK_APP=superset
 
 # set up Superset if we haven't already
 if [ ! -f $SUPERSET_HOME/.setup-complete ]; then
-
+  export FLASK_APP=superset 
   echo "Running first time setup for Superset"
   superset fab create-admin --username admin --password superset --firstname Admin --lastname Superset --email superset+admin@example.com
 
