@@ -1,8 +1,8 @@
 export SUPERSET_HOME=$DOMINO_WORKING_DIR
 #export SUP_META_DB_URI=sqlite:///$DOMINO_WORKING_DIR/superset.db
 export ADDITIONAL_LAUNCH_OPTIONS="--debugger"
-export ADDITIONAL_LAUNCH_OPTIONS=""
-# export PYTHONPATH=$DOMINO_WORKING_DIR:$PYTHONPATH
+#export ADDITIONAL_LAUNCH_OPTIONS=""
+#export PYTHONPATH=$DOMINO_WORKING_DIR:$PYTHONPATH
 export FLASK_APP=superset 
 
 # set up Superset if we haven't already
